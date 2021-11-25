@@ -39,8 +39,12 @@ class Auth extends CI_Controller {
 			$this->session->set_userdata('log',$log);
             
 			$this->session->set_flashdata('toast', 'success:Welcome back '.$cek->username);
-
-			redirect('Home', 'refresh');
+			if ($cek->role == 1) {
+				redirect('Home', 'refresh');
+			} else {
+				redirect('Dashboard', 'refresh');
+			}
+			
 		}else{
 			$this->session->set_flashdata('toast', 'error:Username / Password tidak sesuai');
 			redirect('Auth','refresh');
