@@ -23,7 +23,21 @@
                 </tr>
             </thead>
             <tbody>
-
+			<?php $n = 1;
+                foreach ($masuk as $ms) : ?>
+                    <tr>
+                        <td><?= $n ?></td>
+                        <td><?= $ms->no_agenda ?></td>
+                        <td><?= $ms->tgl_surat ?></td>
+                        <td><?= $ms->pengirim ?></td>
+                        <td><?= $ms->claim ?></td>
+                        <td><?= $ms->catatan ?></td>
+                        <td>
+                            <a class="btn btn-primary" href=""><i class="fa fa-info"></i></a>
+                        </td>
+                    </tr>
+                <?php $n++;
+                endforeach; ?>
             </tbody>
         </table>
     </div>

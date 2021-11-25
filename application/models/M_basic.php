@@ -9,6 +9,9 @@ class M_basic extends CI_Model {
 		if ($w != null) {
 			$this->db->where($w);
 		}
+		if($t == "surat_masuk"){
+			$this->db->join('claim', 'surat_masuk.jenis_klaim = claim.id_claim', 'left');
+		}
 		return $this->db->get($t);
 	}
 
