@@ -64,7 +64,8 @@
   			</div>
   		</div>
   	</div>
-	  <div class="col-xl-3 col-md-6 mb-4">
+
+	<div class="col-xl-3 col-md-6 mb-4">
   		
   	</div>
   </div>

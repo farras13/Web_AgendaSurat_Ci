@@ -19,6 +19,17 @@
            	<i class="fas fa-angle-up"></i>
            </a>
 
+           <?php $data['masuk'] = $getdata;
+			$data['claim'] = $claim;
+			$t = 0;
+			if ($total == null) {
+				$t += 1;
+			} else {
+				$t = $total->no_urut + 1;
+			}
+			$data['total'] = $t;
+			$this->load->view('masuk/modal', $data); ?>
+
            <!-- Logout Modal-->
            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
            	<div class="modal-dialog" role="document">
@@ -48,6 +59,11 @@
            <!-- Custom scripts for all pages-->
            <script src="<?= base_url() ?>assets/admin/js/sb-admin-2.min.js"></script>
 
+           <!-- dataTable -->
+           <script src="<?= base_url() ?>assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+           <script src="<?= base_url() ?>assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+           <!-- toast -->
            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
            <script>

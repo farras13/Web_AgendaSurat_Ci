@@ -12,6 +12,9 @@ class M_basic extends CI_Model {
 		if($t == "surat_masuk"){
 			$this->db->join('claim', 'surat_masuk.jenis_klaim = claim.id_claim', 'left');
 		}
+		if($t == "adum"){
+			$this->db->join('claim', 'adum.jenis_surat = claim.id_claim', 'left');
+		}
 		return $this->db->get($t);
 	}
 

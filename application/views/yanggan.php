@@ -1,11 +1,10 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-0">
-	<h1 class="h3 mb-0 text-gray-800">Surat Masuk Administrasi Umum</h1>
-	<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addModalAdum"><i class="fa fa-plus"></i></a>
+	<h1 class="h3 mb-0 text-gray-800">Surat Masuk Layanan Pelanggan</h1>
 </div>
 <div class="my-3">
 	<hr>
-	<small>Informasi mengenai data surat masuk Administrasi Umum</small>
+	<small>Informasi mengenai data surat masuk Layanan Pelanggan</small>
 </div>
 <div class="row">
 
@@ -18,11 +17,10 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">No Agenda</th>
-							<th scope="col">No Surat</th>
 							<th scope="col">Tanggal Surat</th>
 							<th scope="col">Pengirim</th>
-							<th scope="col">Jenis Surat</th>
-							<th scope="col">Perihal</th>
+							<th scope="col">Jenis Klaim</th>
+							<th scope="col">Keterangan</th>
 							<th scope="col">action</th>
 						</tr>
 					</thead>
@@ -32,15 +30,12 @@
 							<tr>
 								<th scope="row"><?= $n++ ?></th>
 								<td><?= $m->no_agenda ?></td>
-								<td><?= $m->no_surat ?></td>
-								<td><?= $m->tanggal_surat ?></td>
+								<td><?= $m->tgl_surat ?></td>
 								<td><?= $m->pengirim ?></td>
-								<td><?= $m->jenis_surat ?></td>
-								<td><?= $m->perihal ?></td>
+								<td><?= $m->jenis_klaim ?></td>
+								<td><?= $m->catatan ?></td>
 								<td>
-								<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#dtlModalAdum<?= $m->id ?>"><i class="fa fa-info"></i></a>
-								<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#editModalAdum<?= $m->id ?>"><i class="fa fa-pen"></i></a>
-								<a class="btn btn-danger" onclick="return confirm('Apakah anda yakin ?')" href="<?= base_url('home/hapusM/') . $m->id ?>"> <i class="fa fa-trash"></i> </a>
+								<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#dtlModalYang<?= $m->id ?>"><i class="fa fa-info"></i></a>
 								</td>
 							</tr>
 						<?php endforeach; ?>

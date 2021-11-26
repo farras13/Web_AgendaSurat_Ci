@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Cards</title>
+  <title>Asabri - Agenda Surat</title>
 
   <!-- Custom fonts for this template-->
   <link href="<?= base_url() ?>assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -17,6 +17,7 @@
 
   <!-- Custom styles for this template-->
   <link href="<?= base_url() ?>assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
+	<link href="<?= base_url() ?>assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -31,8 +32,8 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('Dashboard') ?>">
         <div class="sidebar-brand-icon">
-			<img class="mx-auto my-2" src="<?= base_url('assets/logo.png') ?>" width="auto" height="65" alt="">
-		</div>
+					<img class="mx-auto my-2" src="<?= base_url('assets/logo.png') ?>" width="auto" height="65" alt="">
+				</div>
       </a>
 
       <!-- Divider -->
@@ -121,7 +122,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-white-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-white-600 small"><?= $user['username'] ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
