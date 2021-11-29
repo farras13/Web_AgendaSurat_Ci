@@ -31,6 +31,18 @@
 				}
 				$data['total'] = $t;
 				$this->load->view('masuk/modal', $data); 						
+			}elseif(!empty($keluar)){
+				
+				$t = 0;
+				if ($total == null) {
+					$t += 1;
+				} else {
+					$t = $total->no_urut + 1;
+				}
+				$data['keluar'] = $keluar;
+				$data['total'] = $t;
+				$data['claim'] = $this->uri->segment(3);
+				$this->load->view('keluar/modal', $data);
 			}	  
 			?>
            <!-- Logout Modal-->

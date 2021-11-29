@@ -79,7 +79,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
 						<?php foreach($claim as $j): ?>
-            	<a class="collapse-item" href="<?= base_url('Dashboard/keluar/').$j->id_claim ?>"><?= $j->claim ?></a>
+            	<a class="collapse-item" href="<?= base_url('Dashboard/keluar/').$j->claim ?>"><?= $j->claim ?></a>
 						<?php endforeach ?>
           </div>
         </div>

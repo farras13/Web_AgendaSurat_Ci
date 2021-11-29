@@ -1,165 +1,67 @@
 <!-- Modal -->
-<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="addModalLabel">Add <?= $judul ?></h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<form action="<?= base_url('Home/ins_keluar') ?>" method="POST" class="form" enctype="multipart/form-data">
-					<div class="row g-2">
-						<div class="col-md-6">
-							<div class="form-floating">
-								<input type="text" class="form-control" name="claim" id="floatingInputGrid" value="<?php  if( $claim !=null ): echo $claim; else:  echo 1 ;  endif; ?>" hidden>
-								<label for="floatingInputGrid">Claim</label>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="form-floating">
-								<input type="text" class="form-control" name="norut" id="floatingInputGrid" value="<?php if($total!=null): echo $total->id_claim + 1; else:  echo 1 ;  endif; ?>" readonly>
-								<label for="floatingInputGrid">No Urut</label>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-floating">
-								<input type="text" class="form-control" name="kode" id="floatingInputGrid">
-								<label for="floatingInputGrid">Kode Surat</label>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-floating">
-								<input type="text" class="form-control" name="no" id="floatingInputGrid">
-								<label for="floatingInputGrid">No Surat</label>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="form-floating">
-								<input type="date" class="form-control" name="tgl_surat" id="floatingInputGrid">
-								<label for="floatingInputGrid">Tanggal Surat</label>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-floating">
-								<input type="text" class="form-control" name="tujuan" id="floatingInputGrid">
-								<label for="floatingInputGrid">Tujuan</label>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-floating">
-								<input type="text" class="form-control" name="perihal" id="floatingInputGrid">
-								<label for="floatingInputGrid">Perihal</label>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="form-floating">
-								<input type="text" class="form-control" name="alamat" id="floatingInputGrid">
-								<label for="floatingInputGrid">Alamat</label>
-							</div>
-						</div>
-
-						<div class="col-md-12">
-							<div class="form-floating">
-								<input type="file" class="form-control" name="file" id="file" accept="application/pdf">
-								<label for="file">Dokumen</label>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="form-floating">
-								<textarea class="form-control" id="Catatan" name="catatan" rows="4"> </textarea>
-								<label for="Catatan">Catatan</label>
-							</div>
-						</div>
-					</div>
-
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-primary">Save changes</button>
-			</div>
-			</form>
-		</div>
-	</div>
-</div>
 
 <!-- Modal Edit -->
 <?php foreach ($keluar as $kl) : ?>
-	<div class="modal fade" id="edtModal<?= $kl->id ?>" tabindex="-1" aria-labelledby="edtModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+	<div class="modal fade" id="edtModal<?= $kl->id ?>" tabindex="-1" role="dialog" aria-labelledby="edtModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="edtModalLabel">Edit <?= $judul ?></h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					<h5 class="modal-title" id="exampleModalLabel">Edit Surat Keluar</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
 				</div>
 				<div class="modal-body">
-					<form action="<?= base_url('Home/upd_keluar/') . $kl->claim . '/' . $kl->id ?>" method="POST" class="form" enctype="multipart/form-data">
-						<div class="row g-2">
-							<div class="col-md-6">
-								<div class="form-floating">
-									<input type="text" class="form-control" name="claim" id="floatingInputGrid" value="<?php  if( $claim !=null ): echo $claim; else:  echo 1 ;  endif; ?>" hidden>
-									<label for="floatingInputGrid">Claim</label>
-								</div>
+					<form action="<?= base_url('Dashboard/upd_keluar/') . $kl->id ?>" method="post" enctype="multipart/form-data">
+						<div class="form-row">
+							<div class="form-group col-md-4">
+								<label for="norut">No urut</label>
+								<input type="text" class="form-control" id="norut" name="norut" value="<?= $kl->no_urut ?>" readonly>
 							</div>
-							<div class="col-md-12">
-								<div class="form-floating">
-									<input type="text" class="form-control" name="norut" id="floatingInputGrid" value="<?= $kl->id_claim; ?>" readonly>
-									<label for="floatingInputGrid">No Urut</label>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-floating">
-									<input type="text" class="form-control" name="kode" id="floatingInputGrid" value="<?= $kl->kode_surat ?>">
-									<label for="floatingInputGrid">Kode Surat</label>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-floating">
-									<input type="text" class="form-control" name="no" id="floatingInputGrid" value="<?= $kl->no_surat ?>">
-									<label for="floatingInputGrid">No Surat</label>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-floating">
-									<input type="date" class="form-control" name="tgl_surat" id="floatingInputGrid" value="<?= $kl->tgl_surat ?>">
-									<label for="floatingInputGrid">Tanggal Surat</label>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-floating">
-									<input type="text" class="form-control" name="tujuan" id="floatingInputGrid" value="<?= $kl->tujuan ?>">
-									<label for="floatingInputGrid">Tujuan</label>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-floating">
-									<input type="text" class="form-control" name="telpon" id="floatingInputGrid" value="<?= $kl->perihal ?>">
-									<label for="floatingInputGrid">Perihal</label>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-floating">
-									<input type="text" class="form-control" name="alamat" id="floatingInputGrid" value="<?= $kl->alamat ?>">
-									<label for="floatingInputGrid">Alamat</label>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-floating">
-									<input type="file" class="form-control" name="file" id="file" accept="application/pdf">
-									<label for="file">Dokumen</label>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-floating">
-									<textarea class="form-control" id="Catatan" name="catatan" rows="4"> <?= $kl->catatan ?> </textarea>
-									<label for="Catatan">Catatan</label>
-								</div>
+							<div class="form-group col-md-8">
+								<label for="ks">Kode Surat</label>
+								<input type="text" class="form-control" id="ks" name="ks" value="<?= $kl->kode_surat ?>">
 							</div>
 						</div>
-
+						<div class="form-group">
+							<label for="nosur">Nomor Surat</label>
+							<input type="text" class="form-control" id="nosur" name="nosur" value="<?= $kl->no_surat ?>">
+						</div>
+						<div class="form-group">
+							<label for="inputAddress2">Jenis Surat</label>
+							<input type="text" class="form-control" id="jns" name="jns" value="<?= $this->uri->segment(3) ?>" list="jns_srt" readonly>
+							<datalist id="jns_srt">
+								<?php foreach ($claim as $c) : ?>
+									<option value="<?= $c->claim ?>"><?= $c->claim ?></option>
+								<?php endforeach ?>
+							</datalist>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="tgl">Tanggal Surat</label>
+								<input type="date" class="form-control" id="tgl" name="tgl" value="<?= $kl->tgl_surat ?>"">
+						</div>
+						<div class=" form-group col-md-6">
+								<label for="tujuan">Tujuan</label>
+								<input type="text" class="form-control" id="tujuan" name="tujuan" value="<?= $kl->tujuan ?>">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="perihal">Alamat</label>
+							<input type="text" class="form-control" id="alamat" name="alamat" value="<?= $kl->alamat ?>">
+						</div>
+						<div class="form-group">
+							<label for="perihal">Perihal</label>
+							<input type="text" class="form-control" id="perihal" name="perihal" value="<?= $kl->perihal ?>">
+						</div>
+						<div class="form-group">
+							<label for="dokumem">Dokumen</label>
+							<input type="file" class="form-control" id="dokumen" name="file" accept="application/pdf">
+						</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Save changes</button>
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<button class="btn btn-primary" type="submit">Submit</button>
 				</div>
 				</form>
 			</div>
@@ -169,71 +71,137 @@
 
 <!-- detail -->
 <?php foreach ($keluar as $kl) : ?>
-	<div class="modal fade" id="detail<?= $kl->id ?>" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+	<div class="modal fade" id="detail<?= $kl->id ?>" tabindex="-1" role="dialog" aria-labelledby="edtModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="detailModalLabel">Modal title</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					<h5 class="modal-title" id="exampleModalLabel">Detail Surat Keluar</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
 				</div>
 				<div class="modal-body">
-					<div class="row g-2">
-						<div class="col-md-6">
-							<div class="form-floating">
-								<input type="text" class="form-control" name="kode" id="floatingInputGrid" value="<?= $kl->kode_surat ?>">
-								<label for="floatingInputGrid">Kode Surat</label>
+					<form action="<?= base_url('Dashboard/upd_keluar/') . $kl->id ?>" method="post" enctype="multipart/form-data">
+						<div class="form-row">
+							<div class="form-group col-md-4">
+								<label for="norut">No urut</label>
+								<input type="text" class="form-control" id="norut" name="norut" value="<?= $kl->no_urut ?>" readonly>
+							</div>
+							<div class="form-group col-md-8">
+								<label for="ks">Kode Surat</label>
+								<input type="text" class="form-control" id="ks" name="ks" value="<?= $kl->kode_surat ?>" readonly>
 							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="form-floating">
-								<input type="text" class="form-control" name="no" id="floatingInputGrid" value="<?= $kl->no_surat ?>">
-								<label for="floatingInputGrid">No Surat</label>
+						<div class="form-group">
+							<label for="nosur">Nomor Surat</label>
+							<input type="text" class="form-control" id="nosur" name="nosur" value="<?= $kl->no_surat ?>" readonly>
+						</div>
+						<div class="form-group">
+							<label for="inputAddress2">Jenis Surat</label>
+							<input type="text" class="form-control" id="jns" name="jns" value="<?= $this->uri->segment(3) ?>" list="jns_srt" readonly>
+							<datalist id="jns_srt">
+								<?php foreach ($claim as $c) : ?>
+									<option value="<?= $c->claim ?>"><?= $c->claim ?></option>
+								<?php endforeach ?>
+							</datalist>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="tgl">Tanggal Surat</label>
+								<input type="date" class="form-control" id="tgl" name="tgl" value="<?= $kl->tgl_surat ?>" readonly>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="tujuan">Tujuan</label>
+								<input type="text" class="form-control" id="tujuan" name="tujuan" value="<?= $kl->tujuan ?>" readonly>
 							</div>
 						</div>
-						<div class="col-md-12">
-							<div class="form-floating">
-								<input type="date" class="form-control" name="tgl_surat" id="floatingInputGrid" value="<?= $kl->tgl_surat ?>">
-								<label for="floatingInputGrid">Tanggal Surat</label>
-							</div>
+						<div class="form-group">
+							<label for="perihal">Alamat</label>
+							<input type="text" class="form-control" id="alamat" name="alamat" value="<?= $kl->alamat ?>" readonly>
 						</div>
-						<div class="col-md-6">
-							<div class="form-floating">
-								<input type="text" class="form-control" name="tujuan" id="floatingInputGrid" value="<?= $kl->tujuan ?>">
-								<label for="floatingInputGrid">Tujuan</label>
-							</div>
+						<div class="form-group">
+							<label for="perihal">Perihal</label>
+							<input type="text" class="form-control" id="perihal" name="perihal" value="<?= $kl->perihal ?>" readonly>
 						</div>
-						<div class="col-md-6">
-							<div class="form-floating">
-								<input type="text" class="form-control" name="telpon" id="floatingInputGrid" value="<?= $kl->perihal ?>">
-								<label for="floatingInputGrid">Perihal</label>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="form-floating">
-								<input type="text" class="form-control" name="alamat" id="floatingInputGrid" value="<?= $kl->alamat ?>">
-								<label for="floatingInputGrid">Alamat</label>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="form-floating">
-								<textarea class="form-control" id="Catatan" name="catatan" rows="4"> <?= $kl->catatan ?> </textarea>
-								<label for="Catatan">Catatan</label>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<h3>Preview Dokumen</h3>
+						<div class="form-group">
+							<label for="dokumem">Dokumen</label>
 							<?php if ($kl->dokumen != null) : ?>
 								<iframe src="<?= base_url('assets/upload/') . $kl->dokumen ?>" width="100%" height="500"></iframe>
 							<?php else : echo "<h5> Dokumen tidak ada </h5>";
 							endif; ?>
 						</div>
-					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<a href="<?= base_url('home/printK/'). $kl->id ?>" class="btn btn-warning">Print</a>
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<a href="<?= base_url('Dashboard/printK/') . $kl->id ?>" class="btn btn-primary">Print</a>
 				</div>
 			</div>
 		</div>
 	</div>
 <?php endforeach; ?>
+
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Tambah Surat Keluar</h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-row">
+					<div class="form-group col-md-4">
+						<label for="norut">No urut</label>
+						<input type="text" class="form-control" id="norut" name="norut" value="<?= $total ?>" readonly>
+					</div>
+					<div class="form-group col-md-8">
+						<label for="ks">Kode Surat</label>
+						<input type="text" class="form-control" id="ks" name="k" placeholder="Kode Surat">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="nosur">Nomor Surat</label>
+					<input type="text" class="form-control" id="nosur" name="nosur" placeholder="Nomor Surat">
+				</div>
+				<div class="form-group">
+					<label for="inputAddress2">Jenis Surat</label>
+					<input type="text" class="form-control" id="jns" name="jns" value="<?= $this->uri->segment(3) ?>" list="jns_srt" readonly>
+					<datalist id="jns_srt">
+						<?php foreach ($claim as $c) : ?>
+							<option value="<?= $c->claim ?>"><?= $c->claim ?></option>
+						<?php endforeach ?>
+					</datalist>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="tgl">Tanggal Surat</label>
+						<input type="date" class="form-control" id="tgl" name="tgl" value="<?= date("Y-m-d") ?>">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="tujuan">Tujuan</label>
+						<input type="text" class="form-control" id="tujuan" name="tujuan" placeholder="Tujuan Surat">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="perihal">Alamat</label>
+					<input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat">
+				</div>
+				<div class="form-group">
+					<label for="perihal">Perihal</label>
+					<input type="text" class="form-control" id="perihal" name="perihal" placeholder="Perihal Surat">
+				</div>
+				<div class="form-group">
+					<label for="dokumem">Dokumen</label>
+					<input type="file" class="form-control" id="dokumen" name="file" accept="application/pdf">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+				<button class="btn btn-primary" type="submit">Submit</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>

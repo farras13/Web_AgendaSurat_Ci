@@ -132,7 +132,7 @@
 		<div class="modal-dialog modal-dialog-centered modal-md" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Edit Surat Masuk Adum</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Detail Surat Masuk Adum</h5>
 					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">×</span>
 					</button>
@@ -181,7 +181,7 @@
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-					<button class="btn btn-primary" type="submit">Submit</button>
+					<a href="<?= base_url('Dashboard/printM/').$ms->id ?>" class="btn btn-primary">Print</a>
 				</div>
 			
 			</div>
@@ -255,7 +255,7 @@
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-					<button class="btn btn-primary" type="submit">Submit</button>
+					<a href="<?= base_url('Home/printM/').$ms->id ?>" class="btn btn-primary">Print</a>
 				</div>
 			
 			</div>

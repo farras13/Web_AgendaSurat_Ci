@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Preview Print Surat Masuk </title>
+	<title>Preview Print Surat Masuk Adum</title>
 	<!-- Favicon-->
 	<link rel="icon" type="image/x-icon" href="<?= base_url() ?>assets/favicon.ico" />
 	<!-- Core theme CSS (includes Bootstrap)-->
@@ -45,55 +45,20 @@
 						</b></center>
 				</div>
 			</div>
-			<?php if($pm->jenis_klaim != "Surat Masuk Ekternal"): ?>
+			
 			<table class="table table-sm table-borderless" style="padding:0;">
 				<tr>
 					<td style="width: 30%;"><label for="inp1" class="col-form-label"><b>No Agenda&nbsp;:</b></label></td>
 					<td><label class="col-form-label"> <?= $pm->no_agenda ?></label></td>
-					<td><label for="inp2" class="col-form-label"><b>Phone&nbsp;:</b></label></td>
-					<td><label class="col-form-label"> <?= $pm->no_tlp ?></label></td>
-				</tr>
+					<td><label for="inp2" class="col-form-label"><b>No Surat&nbsp;:</b></label></td>
+					<td><label class="col-form-label"> <?= $pm->no_surat ?></label></td>
+				</tr>				
 				<tr>
-					<td><label for="inp1" class="col-form-label"><b>No Surat&nbsp;:</b></label></td>
-					<td><label class="col-form-label"> <?= $pm->no_surat ?> </label></td>
-				</tr>
+					<td><label for="inp1" class="col-form-label"><b>Jenis Surat&nbsp;:</b></label></td>
+					<td><label class="col-form-label"> <?= $pm->jenis_surat ?></label></td>
+				</tr>			
 				<tr>
-					<td><label for="inp1" class="col-form-label"><b>Nama Peserta&nbsp;:</b></label></td>
-					<td><label class="col-form-label"> <?= $pm->nama_peserta ?></label></td>
-				</tr>
-				<tr>
-					<td><label for="inp1" class="col-form-label"><b>Nama Pemohon&nbsp;:</b></label></td>
-					<td><label class="col-form-label"> <?= $pm->nama_pemohon ?></label></td>
-				</tr>
-				<tr>
-					<td><label for="inp1" class="col-form-label"><b>NRP&nbsp;:</b></label></td>
-					<td><label class="col-form-label"> <?= $pm->nrp ?></label></td>
-				</tr>
-				<tr>
-					<td><label for="inp1" class="col-form-label"><b>KTPA&nbsp;:</b></label></td>
-					<td><label class="col-form-label"> <?= $pm->no_ktpa ?></label></td>
-				</tr>
-				<tr>
-					<td><label for="inp1" class="col-form-label"><b>Jenis Klaim&nbsp;:</b></label></td>
-					<td><label class="col-form-label"> <?= $pm->jenis_klaim ?></label></td>
-				</tr>
-				<tr>
-					<td><label for="inp1" class="col-form-label"><b>catatan&nbsp;:</b></label></td>
-					<td><label class="col-form-label"> <?= $pm->catatan ?></label></td>
-				</tr>
-			</table>
-			<?php else: ?>
-			<table class="table table-sm table-borderless" style="padding:0;">
-				<tr>
-					<td style="width: 30%;"><label for="inp1" class="col-form-label"><b>No Agenda&nbsp;:</b></label></td>
-					<td><label class="col-form-label"> <?= $pm->no_agenda ?> </label></td>
-				</tr>
-				<tr>
-					<td><label for="inp1" class="col-form-label"><b>No Surat&nbsp;:</b></label></td>
-					<td><label class="col-form-label"> <?= $pm->no_surat ?> </label></td>
-				</tr>
-				<tr>
-					<td><label for="inp1" class="col-form-label"><b>Nama Pengirim&nbsp;:</b></label></td>
+					<td><label for="inp1" class="col-form-label"><b>Pengirim&nbsp;:</b></label></td>
 					<td><label class="col-form-label"> <?= $pm->pengirim ?></label></td>
 				</tr>
 				<tr>
@@ -101,7 +66,7 @@
 					<td><label class="col-form-label"> <?= $pm->perihal ?></label></td>
 				</tr>
 			</table>
-			<?php endif; ?>
+		
 
 			<div class="row row-cols-2 row-cols-md-2 mt-5" style="text-align: center;">
 				<div class="col-3">

@@ -87,7 +87,7 @@ class Dashboard extends CI_Controller
     public function printM($id)
     {
         $w = array('id' => $id);
-        $data['pm'] = $this->m->getData('surat_masuk', $w)->row();
+        $data['pm'] = $this->m->getData('adum', $w)->row();
         $data['user'] = $this->session->userdata('log');
         $this->load->view('masuk/print', $data);
     }
@@ -181,13 +181,14 @@ class Dashboard extends CI_Controller
 
     public function keluar($id)
     {
-        $w = array('claim' => $id);
+        $w = array('klaim' => $id);
 		$data['claim'] = $this->m->getData('claim')->result();
         $data['keluar'] = $this->m->getData('surat_keluar', $w)->result();
+		$data['user'] = $this->session->userdata('log');
         $data['total'] = $this->m->lastId('surat_keluar', $w)->row();
-        $this->load->view('template/header');
+        $this->load->view('template/header', $data);
         $this->load->view('keluar/index', $data);
-        $this->load->view('template/footer');
+        $this->load->view('template/footer', $data);
     }
 
     public function printK($id)
@@ -249,61 +250,55 @@ class Dashboard extends CI_Controller
     {
         if ($dokumen != null && $jenis == 'tambah') {
             $data = array(
-                'id_claim' => $this->input->post('norut'),
-                'claim' => $this->input->post('claim'),
-                'kode_surat' => $this->input->post('kode'),
-                'no_surat' => $this->input->post('no'),
-                'tgl_surat' => $this->input->post('tgl_surat'),
+                'no_urut' => $this->input->post('norut'),
+                'klaim' => $this->input->post('jns'),
+                'kode_surat' => $this->input->post('ks'),
+                'no_surat' => $this->input->post('nosur'),
+                'tgl_surat' => $this->input->post('tgl'),
                 'tgl_kirim' => date('Y-m-d'),
                 'tujuan' => $this->input->post('tujuan'),
                 'alamat' => $this->input->post('alamat'),
                 'perihal' => $this->input->post('perihal'),
-                'catatan' => $this->input->post('catatan'),
                 'dokumen' => $dokumen,
             );
             $this->m->ins('surat_keluar', $data);
         } elseif ($dokumen == null && $jenis == 'tambah') {
             $data = array(
-                'id_claim' => $this->input->post('norut'),
-                'claim' => $this->input->post('claim'),
-                'kode_surat' => $this->input->post('kode'),
-                'no_surat' => $this->input->post('no'),
-                'tgl_surat' => $this->input->post('tgl_surat'),
+                'no_urut' => $this->input->post('norut'),
+				'klaim' => $this->input->post('jns'),
+                'kode_surat' => $this->input->post('ks'),
+                'no_surat' => $this->input->post('nosur'),
+                'tgl_surat' => $this->input->post('tgl'),
                 'tgl_kirim' => date('Y-m-d'),
                 'tujuan' => $this->input->post('tujuan'),
                 'alamat' => $this->input->post('alamat'),
                 'perihal' => $this->input->post('perihal'),
-                'catatan' => $this->input->post('catatan'),
             );
             $this->m->ins('surat_keluar', $data);
         } elseif ($dokumen != null && $jenis == 'update') {
             $data = array(
-                'id_claim' => $this->input->post('norut'),
-                'claim' => $this->input->post('claim'),
-                'kode_surat' => $this->input->post('kode'),
-                'no_surat' => $this->input->post('no'),
-                'tgl_surat' => $this->input->post('tgl_surat'),
-                'tgl_kirim' => date('Y-m-d'),
+                'no_urut' => $this->input->post('norut'),
+				'klaim' => $this->input->post('jns'),
+                'kode_surat' => $this->input->post('ks'),
+                'no_surat' => $this->input->post('nosur'),
+                'tgl_surat' => $this->input->post('tgl'),
                 'tujuan' => $this->input->post('tujuan'),
                 'alamat' => $this->input->post('alamat'),
                 'perihal' => $this->input->post('perihal'),
-                'catatan' => $this->input->post('catatan'),
-                'dokumen' => $dokumen,
+				'dokumen' => $dokumen,
             );
             $w = array('id' => $this->uri->segment(4),);
             $this->m->upd('surat_keluar', $data, $w);
         } else {
             $data = array(
-                'id_claim' => $this->input->post('norut'),
-                'claim' => $this->input->post('claim'),
-                'kode_surat' => $this->input->post('kode'),
-                'no_surat' => $this->input->post('no'),
-                'tgl_surat' => $this->input->post('tgl_surat'),
-                'tgl_kirim' => date('Y-m-d'),
+                'no_urut' => $this->input->post('norut'),
+				'klaim' => $this->input->post('jns'),
+                'kode_surat' => $this->input->post('ks'),
+                'no_surat' => $this->input->post('nosur'),
+                'tgl_surat' => $this->input->post('tgl'),
                 'tujuan' => $this->input->post('tujuan'),
                 'alamat' => $this->input->post('alamat'),
                 'perihal' => $this->input->post('perihal'),
-                'catatan' => $this->input->post('catatan')
             );
             $w = array('id' => $this->uri->segment(4),);
             $this->m->upd('surat_keluar', $data, $w);
