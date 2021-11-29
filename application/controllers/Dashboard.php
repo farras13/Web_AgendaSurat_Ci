@@ -17,9 +17,10 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $data['masuk'] = $this->hitung('surat_masuk');
-        $data['keluar'] = $this->hitung('surat_keluar');
 		$data['claim'] = $this->m->getData('claim')->result();
+		$data['yangan'] = $this->m->getData('surat_masuk')->num_rows();
+		$data['keluar'] = $this->m->getData('surat_keluar')->num_rows();
+		$data['adum'] = $this->m->getData('adum')->num_rows();
 		$data['user'] = $this->session->userdata('log');
 		$this->load->view('template/header', $data);
         $this->load->view('index', $data);
@@ -89,58 +90,6 @@ class Dashboard extends CI_Controller
         $data['pm'] = $this->m->getData('surat_masuk', $w)->row();
         $data['user'] = $this->session->userdata('log');
         $this->load->view('masuk/print', $data);
-    }
-
-    function hitung($t)
-    {
-        $keluar = $this->m->getData($t)->result();
-        $a = 0;
-        $b = 0;
-        $c = 0;
-        $d = 0;
-        $e = 0;
-        $f = 0;
-        $g = 0;
-        if ($t == "surat_keluar") {
-            foreach ($keluar as $k) {
-                if ($k->claim == 1) {
-                    $a += 1;
-                } elseif ($k->claim == 2) {
-                    $b += 1;
-                } elseif ($k->claim == 3) {
-                    $c += 1;
-                } elseif ($k->claim == 4) {
-                    $d += 1;
-                } elseif ($k->claim == 5) {
-                    $e += 1;
-                } elseif ($k->claim == 6) {
-                    $f += 1;
-                } elseif ($k->claim == 7) {
-                    $g += 1;
-                }
-            }
-        } else {
-            foreach ($keluar as $k) {
-                if ($k->jenis_klaim == 1) {
-                    $a += 1;
-                } elseif ($k->jenis_klaim == 2) {
-                    $b += 1;
-                } elseif ($k->jenis_klaim == 3) {
-                    $c += 1;
-                } elseif ($k->jenis_klaim == 4) {
-                    $d += 1;
-                } elseif ($k->jenis_klaim == 5) {
-                    $e += 1;
-                } elseif ($k->jenis_klaim == 6) {
-                    $f += 1;
-                } elseif ($k->jenis_klaim == 7) {
-                    $g += 1;
-                }
-            }
-        }
-
-        $data = [$a, $b, $c, $d, $e, $f, $g];
-        return $data;
     }
 
     public function uploadSM($dokumen, $jenis)
@@ -230,33 +179,10 @@ class Dashboard extends CI_Controller
 		$this->load->view('template/footer', $data);
 	}
 
-    public function keluar()
+    public function keluar($id)
     {
-        $claim = $this->uri->segment(3);
-
-        if ($claim == null) {
-            $w = array('claim' => 1);
-            $data['judul'] = "Nota dinas";
-        } elseif ($claim == 2) {
-            $w = array('claim' => 2);
-            $data['judul'] = "Surat Perintah";
-        } elseif ($claim == 3) {
-            $w = array('claim' => 3);
-            $data['judul'] = "Surat Perintah perjalanan dinas";
-        } elseif ($claim == 4) {
-            $w = array('claim' => 4);
-            $data['judul'] = "Berita acara";
-        } elseif ($claim == 5) {
-            $w = array('claim' => 5);
-            $data['judul'] = "SPKS ";
-        } elseif ($claim == 6) {
-            $w = array('claim' => 6);
-            $data['judul'] = "Surat Keluar Yanggan";
-        } else {
-            $w = array('claim' => 7);
-            $data['judul'] = "Surat keluar Adum";
-        }
-
+        $w = array('claim' => $id);
+		$data['claim'] = $this->m->getData('claim')->result();
         $data['keluar'] = $this->m->getData('surat_keluar', $w)->result();
         $data['total'] = $this->m->lastId('surat_keluar', $w)->row();
         $this->load->view('template/header');

@@ -13,6 +13,7 @@ class Anggota extends CI_Controller {
 
 	public function index()
 	{
+		$data['claim'] = $this->m->getData('claim')->result();
 		$data['user'] = $this->session->userdata('log');
 		$data['getdata'] = $this->m->getData('user', null)->result();
 		$this->load->view('template/header', $data);
@@ -22,6 +23,7 @@ class Anggota extends CI_Controller {
 
 	public function edit($id)
 	{
+		$data['claim'] = $this->m->getData('claim')->result();
 		$data['user'] = $this->session->userdata('log');
 		$data['edit'] = $this->m->getData('user', ['id' => $id])->row();
 		$this->load->view('template/header', $data);
@@ -53,7 +55,8 @@ class Anggota extends CI_Controller {
 
 	public function register()
 	{
-		$data['user'] = $this->session->userdata('log');
+		$data['user'] = $this->session->userdata('log');	
+		$data['claim'] = $this->m->getData('claim')->result();
 		$this->load->view('template/header', $data);
 		$this->load->view('admin/register', $data);
 		$this->load->view('template/footer', $data);
