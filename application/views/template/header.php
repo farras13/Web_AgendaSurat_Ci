@@ -84,7 +84,7 @@
       </li>
 
 	  <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('Dashboard/anggota') ?>">
+        <a class="nav-link" href="<?= base_url('Anggota') ?>">
           <i class="fas fa-fw fa-user"></i>
           <span>Anggota</span></a>
       </li>

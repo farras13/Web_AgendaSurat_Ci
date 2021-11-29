@@ -62,7 +62,7 @@ class Auth extends CI_Controller {
 
 		$this->m->ins('user', $data);
 		$this->session->set_flashdata('toast', 'success:Akun berhasil di tambahkan');
-		redirect('Auth','refresh');
+		redirect('Anggota','refresh');
 	}
 
 	public function logout()

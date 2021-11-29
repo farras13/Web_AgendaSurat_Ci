@@ -93,7 +93,6 @@
 										<button type="submit" class="btn1 mt-4 mb-5"> Login </button>
 									</div>
 								</div>
-								<p>Don't have an account? <a href="<?= base_url('Auth/register') ?>">Register here</a> </p>
 							</form>
 					</div>
 				</div>

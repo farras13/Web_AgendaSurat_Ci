@@ -19,17 +19,20 @@
            	<i class="fas fa-angle-up"></i>
            </a>
 
-           <?php $data['masuk'] = $getdata;
-			$data['claim'] = $claim;
-			$t = 0;
-			if ($total == null) {
-				$t += 1;
-			} else {
-				$t = $total->no_urut + 1;
-			}
-			$data['total'] = $t;
-			$this->load->view('masuk/modal', $data); ?>
-
+           <?php 
+		   	if (!empty($getdata) && !empty($claim)) {				
+				$data['masuk'] = $getdata;
+				$data['claim'] = $claim;
+				$t = 0;
+				if ($total == null) {
+					$t += 1;
+				} else {
+					$t = $total->no_urut + 1;
+				}
+				$data['total'] = $t;
+				$this->load->view('masuk/modal', $data); 						
+			}	  
+			?>
            <!-- Logout Modal-->
            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
            	<div class="modal-dialog" role="document">
@@ -82,22 +85,6 @@
            				toastr.warning(message, status);
            			}
            		<?php } ?>
-           	});
-
-           	$('#tm').on('click', function() {
-           		if (this.value != "Surat Masuk Ekternal" || this.value == null) {
-           			$('.perihalM').hide().find(':input').attr('required', false);
-           		} else {
-           			$('.perihalM').show().find(':input').attr('required', true);
-           		}
-           	});
-
-           	$('#jnsKlaim').on('change', function() {
-           		if (this.value != "Surat Masuk Ekternal" || this.value == null) {
-           			$('.perihalM').hide().find(':input').attr('required', false);
-           		} else {
-           			$('.perihalM').show().find(':input').attr('required', true);
-           		}
            	});
            </script>
 
