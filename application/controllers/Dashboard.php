@@ -183,7 +183,7 @@ class Dashboard extends CI_Controller
     {
         $w = array('klaim' => $id);
 		$data['claim'] = $this->m->getData('claim')->result();
-        $data['keluar'] = $this->m->getData('surat_keluar', $w)->result();
+        $data['getdata'] = $this->m->getData('surat_keluar', $w)->result();
 		$data['user'] = $this->session->userdata('log');
         $data['total'] = $this->m->lastId('surat_keluar', $w)->row();
         $this->load->view('template/header', $data);

@@ -20,30 +20,23 @@
            </a>
 
            <?php 
-		   	if (!empty($getdata) && !empty($claim)) {				
+			$t = 0;	  
+			if ($total == null) {
+				$t += 1;
+			} else {
+				$t = $total->no_urut + 1;
+			}
+			$data['total'] = $t;
+
+		   				
 				$data['masuk'] = $getdata;
-				$data['claim'] = $claim;
-				$t = 0;
-				if ($total == null) {
-					$t += 1;
-				} else {
-					$t = $total->no_urut + 1;
-				}
-				$data['total'] = $t;
+				$data['claim'] = $claim;				
+											
+				$data['keluar'] = $getdata;
+				$data['cm'] = $this->uri->segment(3);
 				$this->load->view('masuk/modal', $data); 						
-			}elseif(!empty($keluar)){
-				
-				$t = 0;
-				if ($total == null) {
-					$t += 1;
-				} else {
-					$t = $total->no_urut + 1;
-				}
-				$data['keluar'] = $keluar;
-				$data['total'] = $t;
-				$data['claim'] = $this->uri->segment(3);
 				$this->load->view('keluar/modal', $data);
-			}	  
+			
 			?>
            <!-- Logout Modal-->
            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

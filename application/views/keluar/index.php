@@ -27,7 +27,7 @@
 					</thead>
 					<tbody>
 						<?php $n = 1;
-						foreach ($keluar as $k) : ?>
+						foreach ($getdata as $k) : ?>
 							<tr>
 								<th scope="row"><?= $n++ ?></th>
 								<td><?= $k->kode_surat . ' / ' . $k->no_surat ?></td>

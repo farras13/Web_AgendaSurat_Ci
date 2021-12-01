@@ -28,9 +28,9 @@
 						<label for="inputAddress2">Jenis Surat</label>
 						<input type="text" class="form-control" id="jns" name="jns" placeholder="jenis Surat" list="jns_srt">
 						<datalist id="jns_srt">
-							<?php foreach ($claim as $c) : ?>
+							<?php if(!empty($claim)){ foreach ($claim as $c) : ?>
 								<option value="<?= $c->claim ?>"><?= $c->claim ?></option>
-							<?php endforeach ?>
+							<?php endforeach; } ?>
 						</datalist>
 					</div>
 					<div class="form-row">
