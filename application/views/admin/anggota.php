@@ -1,7 +1,7 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-0">
 	<h1 class="h3 mb-0 text-gray-800">Anggota Asabri</h1>
-	<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addModalAdum"><i class="fa fa-plus"></i></a>
+	<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addModaluser"><i class="fa fa-plus"></i></a>
 </div>
 <div class="my-3">
 	<hr>

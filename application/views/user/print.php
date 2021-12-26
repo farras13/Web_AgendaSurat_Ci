@@ -14,8 +14,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<style>
 		body {
-			height: 842px;
-			width: 595px;
+			height: 816px;
+			width: 528px;
 			/* to centre page on screen*/
 			margin-left: auto;
 			margin-right: auto;

@@ -179,9 +179,9 @@ class Dashboard extends CI_Controller
 		$this->load->view('template/footer', $data);
 	}
 
-    public function keluar($id)
+    public function keluar()
     {
-        $w = array('klaim' => $id);
+        $w = array('klaim' => $this->uri->segment(3));
 		$data['claim'] = $this->m->getData('claim')->result();
         $data['getdata'] = $this->m->getData('surat_keluar', $w)->result();
 		$data['user'] = $this->session->userdata('log');

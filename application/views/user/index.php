@@ -49,4 +49,4 @@ if ($total == null) {
 }
 $data['dlist'] = $dlist;
 $data['total'] = $t;
-$this->load->view('user/modal', $data); ?>
+$this->load->view('user/modal_yanggan', $data); ?>

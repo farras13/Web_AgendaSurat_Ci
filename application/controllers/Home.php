@@ -17,7 +17,8 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$data['masuk'] = $this->m->getData('surat_masuk')->result();
-		$data['claim'] = ['Nota dinas', 'Surat Perintah', 'Surat Perintah perjalanan dinas', 'Berita acara', 'SPKS', 'Surat Keluar Yanggan', 'Surat keluar Adum'];
+		$data['dlist'] = $this->m->getData('claim')->result();
+		$data['total'] = $this->m->lastId('surat_masuk')->row();
 		$this->load->view('template/head_user');
 		$this->load->view('user/home', $data);
 		$this->load->view('template/footer_user');

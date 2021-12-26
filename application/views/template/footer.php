@@ -36,6 +36,7 @@
 				$data['cm'] = $this->uri->segment(3);
 				$this->load->view('masuk/modal', $data); 						
 				$this->load->view('keluar/modal', $data);
+				$this->load->view('user/modal');
 			
 			?>
            <!-- Logout Modal-->

@@ -8,6 +8,7 @@ class Anggota extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('M_basic', 'm');
+		error_reporting(0);
 	}
 	
 

@@ -151,6 +151,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
+				<form action="<?= base_url('Dashboard/ins_keluar') ?>" method="post" enctype="multipart/form-data">
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label for="norut">No urut</label>
@@ -158,7 +159,7 @@
 					</div>
 					<div class="form-group col-md-8">
 						<label for="ks">Kode Surat</label>
-						<input type="text" class="form-control" id="ks" name="k" placeholder="Kode Surat">
+						<input type="text" class="form-control" id="ks" name="ks" placeholder="Kode Surat">
 					</div>
 				</div>
 				<div class="form-group">
