@@ -42,11 +42,13 @@
 <?php
 $data['masuk'] = $masuk;
 $t = 0;
+
 if ($total == null) {
 	$t += 1;
 } else {
-	$t = $total->no_urut + 1;
+	$t += $total->no_urut + 1;
 }
+
 $data['dlist'] = $dlist;
 $data['total'] = $t;
 $this->load->view('user/modal_yanggan', $data); ?>

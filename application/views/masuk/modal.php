@@ -215,7 +215,7 @@
 						</div>
 						<div class="form-group">
 							<label for="inputAddress2">Jenis Klaim</label>
-							<input type="text" class="form-control" id="jns" name="jns" readonly value="<?= $ms->jenis_klaim ?>">
+							<input type="text" class="form-control" id="jns" name="jns" readonly value="<?= $ms->claim ?>">
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">

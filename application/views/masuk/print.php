@@ -19,8 +19,8 @@
 		}
 
 		body {
-			height: 816px;
-			width: 528px;
+			height:528px ;
+			width: 816px;
 			margin-left: auto;
 			margin-right: auto;
 			/* to centre page on screen*/

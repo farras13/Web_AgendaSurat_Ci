@@ -32,6 +32,12 @@ class M_basic extends CI_Model {
 		return $this->db->get($t, 1);		
 	}
 
+	public function tabklaim($t, $g)
+	{
+		$this->db->group_by($g);
+		return $this->db->get($t)->result();		
+	}
+
 	public function ins($t, $data)
 	{
 		$this->db->insert($t, $data);

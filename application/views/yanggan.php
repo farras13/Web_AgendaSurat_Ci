@@ -32,7 +32,7 @@
 								<td><?= $m->no_agenda ?></td>
 								<td><?= $m->tgl_surat ?></td>
 								<td><?= $m->pengirim ?></td>
-								<td><?= $m->jenis_klaim ?></td>
+								<td><?= $m->claim ?></td>
 								<td><?= $m->catatan ?></td>
 								<td>
 								<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#dtlModalYang<?= $m->id ?>"><i class="fa fa-info"></i></a>

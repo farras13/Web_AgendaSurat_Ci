@@ -92,18 +92,24 @@ class Home extends CI_Controller
 
 	function uploadSM($dokumen, $jenis)
 	{
-		$year = date("y");
-		$wc = array('claim' => $this->input->post('perihal'),);
+		$year = date("Y");
+		$wc = array('id_claim' => $this->input->post('perihal'),);
 		$cek = $this->m->getData('claim', $wc)->row();
 		$jns =0;
+
 		if ($cek == null) {
-			$this->m->ins('claim', $wc);
-			$getlast = $this->m->getData('claim', $wc)->row();
-			$jns += $getlast->id_claim;
+			$temp = $this->m->getData('claim', ['claim' => $this->input->post('perihal')])->row();
+			if ($temp == null) {
+				$this->m->ins('claim', $wc);
+				$getlast = $this->m->getData('claim', $wc)->row();
+				$jns += $getlast->id_claim;
+			}else{
+				$jns += $cek->id_claim;
+			}
 		} else {
 			$jns += $cek->id_claim;
 		}
-
+		
 		$norut = $this->m->lastId('surat_masuk')->row();
 		if ($norut != null) {
 			$lastYear = date('Y', strtotime($norut->tgl_entry));
@@ -128,7 +134,7 @@ class Home extends CI_Controller
 				'no_ktpa' => $this->input->post('ktpa'),
 				'alamat' => $this->input->post('alamat'),
 				'no_tlp' => $this->input->post('telpon'),
-				'jenis_klaim' => $jenis,
+				'jenis_klaim' => $jns,
 				'catatan' => $this->input->post('catatan'),
 				'dokumen' => $dokumen,
 			);
@@ -154,7 +160,6 @@ class Home extends CI_Controller
 			
 		} elseif ($dokumen != null && $jenis == 'update') {
 			$data = array(
-				'no_urut' => $urut,
 				'no_agenda' => $this->input->post('no'),
 				'tgl_surat' => $this->input->post('tgl_surat'),
 				'pengirim' => $this->input->post('pengirim'),
@@ -171,7 +176,6 @@ class Home extends CI_Controller
 			$this->m->upd('surat_masuk', $data, $w);
 		} else {
 			$data = array(
-				'no_urut' => $urut,
 				'no_agenda' => $this->input->post('no'),
 				'tgl_surat' => $this->input->post('tgl_surat'),
 				'pengirim' => $this->input->post('pengirim'),

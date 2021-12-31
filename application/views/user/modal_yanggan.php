@@ -109,7 +109,7 @@
 		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="edtModalLabel">Add Surat Masuk</h5>
+					<h5 class="modal-title" id="edtModalLabel">Edit Surat Masuk</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
@@ -129,7 +129,7 @@
 							</div>
 							<div class="col-md-12">
 								<div class="form-floating">
-									<input type="text" class="form-control" name="perihal" id="perihal" list="klaim" value="<?= $ms->claim ?>">
+									<input type="text" class="form-control" name="perihal" id="perihal" list="klaim" value="<?= $ms->id_claim ?>">
 									<datalist id="klaim">
 										<?php foreach ($dlist as $l) : ?>
 											<option value="<?= $l->id_claim ?>"><?= $l->claim ?></option>
@@ -187,12 +187,12 @@
 								</div>
 							</div>
 							<div class="col-md-12">
-								<label for="dokumem">Dokumen</label>
-								<?php if ($ms->dokumen != null) : ?>
-									<iframe src="<?= base_url('assets/upload/') . $ms->dokumen ?>" width="100%" height="500"></iframe>
-								<?php else : echo "<h5> Dokumen tidak ada </h5>";
-								endif; ?>
+								<div class="form-floating">
+									<input type="file" class="form-control" name="file" id="file" accept="application/pdf" disabled>
+									<label for="file">Dokumen</label>
+								</div>
 							</div>
+							
 							<div class="col-md-12">
 								<div class="form-floating">
 									<textarea class="form-control" id="Catatan" name="catatan" rows="4"> <?= $ms->catatan ?> </textarea>
@@ -234,6 +234,17 @@
 								<div class="form-floating">
 									<input type="text" class="form-control" name="no" id="floatingInputGrid" value="<?= $ms->no_agenda ?>" disabled>
 									<label for="floatingInputGrid">No Agenda</label>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-floating">
+									<input type="text" class="form-control" name="perihal" id="perihal" list="klaim" value="<?= $ms->claim ?>" readonly>
+									<datalist id="klaim">
+										<?php foreach ($dlist as $l) : ?>
+											<option value="<?= $l->claim ?>"><?= $l->claim ?></option>
+										<?php endforeach; ?>
+									</datalist>
+									<label for="perihal">Jenis Klaim</label>
 								</div>
 							</div>
 							<div class="row col-lg-12 mt-2">
@@ -286,10 +297,11 @@
 							</div>
 
 							<div class="col-md-12">
-								<div class="form-floating">
-									<input type="file" class="form-control" name="file" id="file" accept="application/pdf" disabled>
-									<label for="file">Dokumen</label>
-								</div>
+								<label for="dokumem">Dokumen</label>
+								<?php if ($ms->dokumen != null) : ?>
+									<iframe src="<?= base_url('assets/upload/') . $ms->dokumen ?>" width="100%" height="500"></iframe>
+								<?php else : echo "<h5> Dokumen tidak ada </h5>";
+								endif; ?>
 							</div>
 							<div class="col-md-12">
 								<div class="form-floating">

@@ -8,11 +8,21 @@
 	<small>Informasi mengenai data surat Keluar <?= $this->uri->segment(3); ?></small>
 </div>
 <div class="row">
-
 	<!-- Earnings (Monthly) Card Example -->
 	<div class="col-xl-12 col-md-12 mb-4">
 		<div class="card border-left-primary shadow">
+			<div class="card-header">
+				<ul class="nav nav-tabs">
+					<?php foreach ($tab as $k) : ?>
+						<li class="nav-item">
+							<a class="nav-link <?php if ($this->uri->segment(3) == $k->klaim) : echo 'active';
+												endif; ?>" aria-current="page" href="<?= base_url('Dashboard/keluar/') . $k->klaim ?>"><?= $k->klaim ?></a>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
 			<div class="card-body">
+
 				<table class="table table-hover table-responsive-md" id="myTable">
 					<thead>
 						<tr>
