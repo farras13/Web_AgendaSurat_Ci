@@ -78,7 +78,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-						<?php foreach($tab as $j): ?>
+						<?php foreach($side as $j): ?>
             	<a class="collapse-item" href="<?= base_url('Dashboard/keluar/').$j->klaim ?>"><?= $j->klaim ?></a>
 						<?php endforeach ?>
           </div>

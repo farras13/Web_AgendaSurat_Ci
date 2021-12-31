@@ -39,6 +39,7 @@ class Dashboard extends CI_Controller
 		}
 		$data['total'] = $this->m->lastId('adum')->row();
 		$data['tab'] = $this->m->tabklaim('adum', 'jenis_surat');
+		$data['side'] = $this->m->tabklaim('surat_keluar', 'klaim');
 		$data['claim'] = $this->m->getData('claim')->result();
 		$data['user'] = $this->session->userdata('log');
 		$this->load->view('template/header', $data);
@@ -193,6 +194,7 @@ class Dashboard extends CI_Controller
 		$w = array('klaim' => $claim);
 		$data['claim'] = $this->m->getData('claim')->result();
 		$data['tab'] = $this->m->tabklaim('surat_keluar', 'klaim');
+		$data['side'] = $this->m->tabklaim('surat_keluar', 'klaim');
 
 		if ($claim == null) {
 			$data['getdata'] = $this->m->getData('surat_keluar', null)->result();
