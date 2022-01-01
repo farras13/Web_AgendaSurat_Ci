@@ -93,16 +93,17 @@ class Home extends CI_Controller
 	function uploadSM($dokumen, $jenis)
 	{
 		$year = date("Y");
-		$wc = array('id_claim' => $this->input->post('perihal'),);
+		$wc = array('id_claim' => $this->input->post('perihal'));
 		$cek = $this->m->getData('claim', $wc)->row();
 		$jns =0;
-
 		if ($cek == null) {
 			$temp = $this->m->getData('claim', ['claim' => $this->input->post('perihal')])->row();
+			// var_dump($wc);die;
+
 			if ($temp == null) {
-				$this->m->ins('claim', $wc);
-				$getlast = $this->m->getData('claim', $wc)->row();
-				$jns += $getlast->id_claim;
+				$this->m->ins('claim',  ['claim' => $this->input->post('perihal')]);
+				$getlast = $this->m->getData('claim', ['claim' => $this->input->post('perihal')])->row();
+				$jns += $getlast->id_claim;	
 			}else{
 				$jns += $cek->id_claim;
 			}

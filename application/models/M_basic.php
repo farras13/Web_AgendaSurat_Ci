@@ -40,7 +40,8 @@ class M_basic extends CI_Model {
 
 	public function ins($t, $data)
 	{
-		$this->db->insert($t, $data);
+		$a = $this->db->insert($t, $data);
+		return $a;
 	}
 
 	public function upd($t, $data, $w)
