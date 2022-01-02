@@ -49,7 +49,7 @@
 								<td>
 									<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#detail<?= $k->id ?>"><i class="fa fa-info"></i></a>
 									<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#edtModal<?= $k->id ?>"><i class="fa fa-pen"></i></a>
-									<a class="btn btn-danger" onclick="return confirm('Apakah anda yakin ?')" href="<?= base_url('home/hapusK/') . $k->id ?>"> <i class="fa fa-trash"></i> </a>
+									<a class="btn btn-danger" onclick="return confirm('Apakah anda yakin ?')" href="<?= base_url('Dashboard/hapusK/') . $k->id ?>"> <i class="fa fa-trash"></i> </a>
 								</td>
 							</tr>
 						<?php endforeach; ?>

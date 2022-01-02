@@ -19,8 +19,8 @@
            	<i class="fas fa-angle-up"></i>
            </a>
 
-           <?php 
-			$t = 0;	  
+           <?php
+			$t = 0;
 			if ($total == null) {
 				$t += 1;
 			} else {
@@ -28,16 +28,19 @@
 			}
 			$data['total'] = $t;
 
-		   				
-				$data['masuk'] = $getdata;
-				$data['claim'] = $claim;				
-											
-				$data['keluar'] = $getdata;
-				$data['cm'] = $this->uri->segment(3);
-				$this->load->view('masuk/modal', $data); 						
+
+			$data['masuk'] = $getdata;
+			$data['claim'] = $claim;
+
+			$data['keluar'] = $getdata;
+			if ($this->uri->segment(2) == "keluar") {
 				$this->load->view('keluar/modal', $data);
+			} else if ($this->uri->segment(2) == "masuk") {
+				$this->load->view('masuk/modal', $data);
+			} else {
 				$this->load->view('user/modal');
-			
+			}
+
 			?>
            <!-- Logout Modal-->
            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

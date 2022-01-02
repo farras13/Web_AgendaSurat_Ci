@@ -50,7 +50,7 @@
 								<td>
 									<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#dtlModalAdum<?= $m->id ?>"><i class="fa fa-info"></i></a>
 									<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#editModalAdum<?= $m->id ?>"><i class="fa fa-pen"></i></a>
-									<a class="btn btn-danger" onclick="return confirm('Apakah anda yakin ?')" href="<?= base_url('dashboard/hapusM/') . $m->id ?>"> <i class="fa fa-trash"></i> </a>
+									<a class="btn btn-danger" onclick="return confirm('Apakah anda yakin ?')" href="<?= base_url('Dashboard/hapusM/') . $m->id ?>"> <i class="fa fa-trash"></i> </a>
 								</td>
 							</tr>
 						<?php endforeach; ?>

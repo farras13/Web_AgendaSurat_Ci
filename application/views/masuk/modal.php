@@ -155,7 +155,7 @@
 						</div>
 						<div class="form-group">
 							<label for="inputAddress2">Jenis Surat</label>
-							<input type="text" class="form-control" id="jns" name="jns" readonly value="<?= $ms->claim ?>">
+							<input type="text" class="form-control" id="jns" name="jns" readonly value="<?= $ms->jenis_surat ?>">
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">

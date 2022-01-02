@@ -29,7 +29,8 @@ class Dashboard extends CI_Controller
 
 	public function masuk()
 	{
-		$claim = $this->uri->segment(3);
+		$str = $this->uri->segment(3);
+		$claim =str_replace('%20', ' ', $str);
 		$w = array('jenis_surat' => $claim);
 		if ($claim == null) {
 			$data['getdata'] = $this->m->getData('adum')->result();
@@ -89,7 +90,7 @@ class Dashboard extends CI_Controller
 	public function hapusM($id)
 	{
 		$w = array('id' => $id,);
-		$this->m->del('surat_masuk', $w);
+		$a = $this->m->del('adum', $w);
 		redirect('Dashboard/masuk', 'refresh');
 	}
 
@@ -198,7 +199,7 @@ class Dashboard extends CI_Controller
 
 		if ($claim == null) {
 			$data['getdata'] = $this->m->getData('surat_keluar', null)->result();
-			$data['total'] = $this->m->lastId('surat_keluar', null)->row();
+			$data['total'] = 1;
 		} else {
 			$data['total'] = $this->m->lastId('surat_keluar', $w)->row();
 			$data['getdata'] = $this->m->getData('surat_keluar', $w)->result();
@@ -228,13 +229,15 @@ class Dashboard extends CI_Controller
 
 		if (!$this->upload->do_upload('file')) {
 			$this->session->set_flashdata('toast', 'error:' . $this->upload->display_errors());
-			$this->uploadSK(null, 'tambah');
+			$a = $this->uploadSK(null, 'tambah');
+			var_dump($a);
 		} else {
 			$data = $this->upload->data('file_name');
 			$this->uploadSK($data, 'tambah');
 		}
-		$this->session->set_flashdata('toast', 'success:Data berhasil di tambahkan');
-		redirect('Dashboard/keluar', 'refresh');
+		die;
+		// $this->session->set_flashdata('toast', 'success:Data berhasil di tambahkan');
+		
 	}
 
 	public function upd_keluar()
@@ -270,7 +273,7 @@ class Dashboard extends CI_Controller
 		$year = date("Y");
 		$norut = $this->m->lastId('surat_keluar')->row();
 		if ($norut != null) {
-			$lastYear = date('Y', strtotime($norut->tgl_entry));
+			$lastYear = date('Y', strtotime($norut->tgl_kirim));
 			if ($lastYear != $year) {
 				$urut = 1;
 			} else {
@@ -293,7 +296,7 @@ class Dashboard extends CI_Controller
 				'perihal' => $this->input->post('perihal'),
 				'dokumen' => $dokumen,
 			);
-			$this->m->ins('surat_keluar', $data);
+			$a = $this->m->ins('surat_keluar', $data);
 		} elseif ($dokumen == null && $jenis == 'tambah') {
 			$data = array(
 				'no_urut' => $urut,
@@ -306,7 +309,7 @@ class Dashboard extends CI_Controller
 				'alamat' => $this->input->post('alamat'),
 				'perihal' => $this->input->post('perihal'),
 			);
-			$this->m->ins('surat_keluar', $data);
+			$this->m->ins('surat_keluarjkh', $data);
 		} elseif ($dokumen != null && $jenis == 'update') {
 			$data = array(
 				'no_urut' => $urut,
