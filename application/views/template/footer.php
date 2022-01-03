@@ -35,7 +35,7 @@
 			$data['keluar'] = $getdata;
 			if ($this->uri->segment(2) == "keluar") {
 				$this->load->view('keluar/modal', $data);
-			} else if ($this->uri->segment(2) == "masuk") {
+			} else if ($this->uri->segment(2) == "masuk" || $this->uri->segment(2) == "yanggan") {
 				$this->load->view('masuk/modal', $data);
 			} else {
 				$this->load->view('user/modal');

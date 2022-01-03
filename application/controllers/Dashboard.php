@@ -191,7 +191,8 @@ class Dashboard extends CI_Controller
 
 	public function keluar()
 	{
-		$claim = $this->uri->segment(3);
+		$str = $this->uri->segment(3);
+		$claim =str_replace('%20', ' ', $str);
 		$w = array('klaim' => $claim);
 		$data['claim'] = $this->m->getData('claim')->result();
 		$data['tab'] = $this->m->tabklaim('surat_keluar', 'klaim');
@@ -236,8 +237,8 @@ class Dashboard extends CI_Controller
 			$this->uploadSK($data, 'tambah');
 		}
 		die;
-		// $this->session->set_flashdata('toast', 'success:Data berhasil di tambahkan');
-		
+		$this->session->set_flashdata('toast', 'success:Data berhasil di tambahkan');
+		redirect('Dashboard/keluar', 'refresh');
 	}
 
 	public function upd_keluar()
@@ -309,7 +310,7 @@ class Dashboard extends CI_Controller
 				'alamat' => $this->input->post('alamat'),
 				'perihal' => $this->input->post('perihal'),
 			);
-			$this->m->ins('surat_keluarjkh', $data);
+			$this->m->ins('surat_keluar', $data);
 		} elseif ($dokumen != null && $jenis == 'update') {
 			$data = array(
 				'no_urut' => $urut,
@@ -322,7 +323,7 @@ class Dashboard extends CI_Controller
 				'perihal' => $this->input->post('perihal'),
 				'dokumen' => $dokumen,
 			);
-			$w = array('id' => $this->uri->segment(4),);
+			$w = array('id' => $this->uri->segment(3),);
 			$this->m->upd('surat_keluar', $data, $w);
 		} else {
 			$data = array(

@@ -188,7 +188,7 @@
 							</div>
 							<div class="col-md-12">
 								<div class="form-floating">
-									<input type="file" class="form-control" name="file" id="file" accept="application/pdf" disabled>
+									<input type="file" class="form-control" name="file" id="file" accept="application/pdf" >
 									<label for="file">Dokumen</label>
 								</div>
 							</div>

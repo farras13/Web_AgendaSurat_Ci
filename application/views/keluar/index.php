@@ -1,11 +1,11 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-0">
-	<h1 class="h3 mb-0 text-gray-800">Surat Keluar <?= $this->uri->segment(3); ?></h1>
+	<h1 class="h3 mb-0 text-gray-800">Surat Keluar <?= $claim =str_replace('%20', ' ', $this->uri->segment(3)); ?></h1>
 	<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addModal"><i class="fa fa-plus"></i></a>
 </div>
 <div class="my-3">
 	<hr>
-	<small>Informasi mengenai data surat Keluar <?= $this->uri->segment(3); ?></small>
+	<small>Informasi mengenai data surat Keluar <?= $claim ; ?></small>
 </div>
 <div class="row">
 	<!-- Earnings (Monthly) Card Example -->
@@ -31,7 +31,6 @@
 							<th scope="col">Tanggal Surat</th>
 							<th scope="col">Tujuan</th>
 							<th scope="col">Perihal</th>
-							<th scope="col">Catatan</th>
 							<th scope="col">action</th>
 						</tr>
 					</thead>
@@ -45,14 +44,13 @@
 								<td><?= $k->tgl_surat ?></td>
 								<td><?= $k->tujuan ?></td>
 								<td><?= $k->perihal ?></td>
-								<td><?= $k->catatan ?></td>
 								<td>
 									<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#detail<?= $k->id ?>"><i class="fa fa-info"></i></a>
 									<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#edtModal<?= $k->id ?>"><i class="fa fa-pen"></i></a>
 									<a class="btn btn-danger" onclick="return confirm('Apakah anda yakin ?')" href="<?= base_url('Dashboard/hapusK/') . $k->id ?>"> <i class="fa fa-trash"></i> </a>
 								</td>
 							</tr>
-						<?php endforeach; ?>
+						<?php endforeach; ?>	
 					</tbody>
 				</table>
 			</div>
