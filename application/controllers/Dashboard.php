@@ -202,7 +202,7 @@ class Dashboard extends CI_Controller
 	{
 		$claim = $this->input->post('jenis_klaim');
 
-		$w = array('jenis_klaim' => $claim);
+		$w = array('jenis_surat' => $claim);
 		$data = $this->m->lastId('surat_masuk', $w)->row_array();
 		echo json_encode($data);
 	}
