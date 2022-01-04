@@ -22,14 +22,14 @@ class M_basic extends CI_Model {
 	{
 		if ($w != null) {
 			$this->db->where($w);	
+		}
+		
+		if ($t == "claim") {
+			$this->db->order_by('id_claim', 'desc');	
+		} else {
 			$this->db->order_by('id', 'desc');
-		}else{
-			if ($t == "claim") {
-				$this->db->order_by('id_claim', 'desc');	
-			} else {
-				$this->db->order_by('id', 'desc');
-			}
-		}	
+		}
+			
 		return $this->db->get($t, 1);		
 	}
 
