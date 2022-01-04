@@ -15,8 +15,8 @@
 				<ul class="nav nav-tabs">
 					<?php foreach ($tab as $k) : ?>
 						<li class="nav-item">
-							<a class="nav-link <?php if ($this->uri->segment(3) == $k->klaim) : echo 'active';
-												endif; ?>" aria-current="page" href="<?= base_url('Dashboard/keluar/') . $k->klaim ?>"><?= $k->klaim ?></a>
+							<a class="nav-link <?php if ($this->uri->segment(3) == $k->jenis_klaim) : echo 'active';
+												endif; ?>" aria-current="page" href="<?= base_url('Dashboard/keluar/') . $k->jenis_klaim ?>"><?= $k->jenis_klaim ?></a>
 						</li>
 					<?php endforeach; ?>
 				</ul>

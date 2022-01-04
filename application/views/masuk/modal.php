@@ -26,7 +26,7 @@
 					</div>
 					<div class="form-group">
 						<label for="inputAddress2">Jenis Surat</label>
-						<input type="text" class="form-control" id="jns" name="jns" placeholder="jenis Surat" list="jns_srt">
+						<input type="text" class="form-control" id="jnsM" name="jns" placeholder="jenis Surat" list="jns_srt">
 						<datalist id="jns_srt">
 							<?php if(!empty($claim)){ foreach ($claim as $c) : ?>
 								<option value="<?= $c->claim ?>"><?= $c->claim ?></option>
@@ -90,7 +90,7 @@
 						</div>
 						<div class="form-group">
 							<label for="inputAddress2">Jenis Surat</label>
-							<input type="text" class="form-control" id="jns" name="jns" list="jns_srt" value="<?= $ms->jenis_surat ?>">
+							<input type="text" class="form-control" id="jnsM" name="jns" list="jns_srt" value="<?= $ms->jenis_surat ?>">
 							<datalist id="jns_srt">
 								<?php foreach ($claim as $c) : ?>
 									<option value="<?= $c->claim ?>"><?= $c->claim ?></option>
@@ -155,7 +155,7 @@
 						</div>
 						<div class="form-group">
 							<label for="inputAddress2">Jenis Surat</label>
-							<input type="text" class="form-control" id="jns" name="jns" readonly value="<?= $ms->jenis_surat ?>">
+							<input type="text" class="form-control" id="jnsM" name="jns" readonly value="<?= $ms->jenis_surat ?>">
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">

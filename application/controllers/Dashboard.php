@@ -30,7 +30,7 @@ class Dashboard extends CI_Controller
 	public function masuk()
 	{
 		$str = $this->uri->segment(3);
-		$claim =str_replace('%20', ' ', $str);
+		$claim = str_replace('%20', ' ', $str);
 		$w = array('jenis_surat' => $claim);
 		if ($claim == null) {
 			$data['getdata'] = $this->m->getData('adum')->result();
@@ -40,7 +40,7 @@ class Dashboard extends CI_Controller
 		}
 		$data['total'] = $this->m->lastId('adum')->row();
 		$data['tab'] = $this->m->tabklaim('adum', 'jenis_surat');
-		$data['side'] = $this->m->tabklaim('surat_keluar', 'klaim');
+		$data['side'] = $this->m->tabklaim('surat_keluar', 'jenis_klaim');
 		$data['claim'] = $this->m->getData('claim')->result();
 		$data['user'] = $this->session->userdata('log');
 		$this->load->view('template/header', $data);
@@ -189,18 +189,36 @@ class Dashboard extends CI_Controller
 		$this->load->view('template/footer', $data);
 	}
 
+	public function get_norutK()
+	{
+		$claim = $this->input->post('jenis_klaim');
+
+		$w = array('jenis_klaim' => $claim);
+		$data = $this->m->lastId('surat_keluar', $w)->row_array();
+		echo json_encode($data);
+	}
+
+	public function get_norutM()
+	{
+		$claim = $this->input->post('jenis_klaim');
+
+		$w = array('jenis_klaim' => $claim);
+		$data = $this->m->lastId('surat_masuk', $w)->row_array();
+		echo json_encode($data);
+	}
+
 	public function keluar()
 	{
 		$str = $this->uri->segment(3);
-		$claim =str_replace('%20', ' ', $str);
-		$w = array('klaim' => $claim);
+		$claim = str_replace('%20', ' ', $str);
+		$w = array('jenis_klaim' => $claim);
 		$data['claim'] = $this->m->getData('claim')->result();
-		$data['tab'] = $this->m->tabklaim('surat_keluar', 'klaim');
-		$data['side'] = $this->m->tabklaim('surat_keluar', 'klaim');
+		$data['tab'] = $this->m->tabklaim('surat_keluar', 'jenis_klaim');
+		$data['side'] = $this->m->tabklaim('surat_keluar', 'jenis_klaim');
 
 		if ($claim == null) {
 			$data['getdata'] = $this->m->getData('surat_keluar', null)->result();
-			$data['total'] = 1;
+			$data['total'] = 0;
 		} else {
 			$data['total'] = $this->m->lastId('surat_keluar', $w)->row();
 			$data['getdata'] = $this->m->getData('surat_keluar', $w)->result();
@@ -231,12 +249,11 @@ class Dashboard extends CI_Controller
 		if (!$this->upload->do_upload('file')) {
 			$this->session->set_flashdata('toast', 'error:' . $this->upload->display_errors());
 			$a = $this->uploadSK(null, 'tambah');
-			var_dump($a);
 		} else {
 			$data = $this->upload->data('file_name');
 			$this->uploadSK($data, 'tambah');
 		}
-		die;
+
 		$this->session->set_flashdata('toast', 'success:Data berhasil di tambahkan');
 		redirect('Dashboard/keluar', 'refresh');
 	}
@@ -284,10 +301,12 @@ class Dashboard extends CI_Controller
 			$urut = $this->input->post('norut');
 		}
 
+
+
 		if ($dokumen != null && $jenis == 'tambah') {
 			$data = array(
 				'no_urut' => $urut,
-				'klaim' => $this->input->post('jns'),
+				'jenis_klaim' => $this->input->post('jns'),
 				'kode_surat' => $this->input->post('ks'),
 				'no_surat' => $this->input->post('nosur'),
 				'tgl_surat' => $this->input->post('tgl'),
@@ -301,7 +320,7 @@ class Dashboard extends CI_Controller
 		} elseif ($dokumen == null && $jenis == 'tambah') {
 			$data = array(
 				'no_urut' => $urut,
-				'klaim' => $this->input->post('jns'),
+				'jenis_klaim' => $this->input->post('jns'),
 				'kode_surat' => $this->input->post('ks'),
 				'no_surat' => $this->input->post('nosur'),
 				'tgl_surat' => $this->input->post('tgl'),
@@ -314,7 +333,7 @@ class Dashboard extends CI_Controller
 		} elseif ($dokumen != null && $jenis == 'update') {
 			$data = array(
 				'no_urut' => $urut,
-				'klaim' => $this->input->post('jns'),
+				'jenis_klaim' => $this->input->post('jns'),
 				'kode_surat' => $this->input->post('ks'),
 				'no_surat' => $this->input->post('nosur'),
 				'tgl_surat' => $this->input->post('tgl'),
@@ -328,7 +347,7 @@ class Dashboard extends CI_Controller
 		} else {
 			$data = array(
 				'no_urut' => $urut,
-				'klaim' => $this->input->post('jns'),
+				'jenis_klaim' => $this->input->post('jns'),
 				'kode_surat' => $this->input->post('ks'),
 				'no_surat' => $this->input->post('nosur'),
 				'tgl_surat' => $this->input->post('tgl'),

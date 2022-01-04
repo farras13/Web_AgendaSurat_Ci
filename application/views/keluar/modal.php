@@ -99,7 +99,7 @@
 						</div>
 						<div class="form-group">
 							<label for="inputAddress2">Jenis Surat</label>
-							<input type="text" class="form-control" id="jns" name="jns" value="<?= $this->uri->segment(3) ?>" list="jns_srt" readonly>
+							<input type="text" class="form-control" id="jns" name="jns" value="<?= $kl->jenis_klaim ?>" list="jns_srt" readonly>
 							<datalist id="jns_srt">
 								<?php foreach ($cm as $c) : ?>
 									<option value="<?= $c->claim ?>"><?= $c->claim ?></option>
@@ -168,7 +168,7 @@
 						</div>
 						<div class="form-group">
 							<label for="inputAddress2">Jenis Surat</label>
-							<input type="text" class="form-control" id="jns" name="jns" value="<?= $this->uri->segment(3) ?>" list="jns_srt" readonly>
+							<input type="text" class="form-control" id="jns" name="jns" value="<?= $kl->jenis_klaim ?>" list="jns_srt" readonly>
 							<datalist id="jns_srt">
 								<?php foreach ($cm as $c) : ?>
 									<option value="<?= $c->claim ?>"><?= $c->claim ?></option>

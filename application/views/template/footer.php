@@ -26,6 +26,8 @@
 			} else {
 				$t = $total->no_urut + 1;
 			}
+
+			var_dump($total);
 			$data['total'] = $t;
 
 
@@ -94,6 +96,58 @@
            				toastr.warning(message, status);
            			}
            		<?php } ?>
+           	});
+
+           	$('#jns').change(function() {
+           		var jenis_klaim = $(this).val();
+           		console.log(jenis_klaim);
+           		$.ajax({
+           			url: "<?= base_url('Dashboard/get_norutK') ?>",
+           			data: {
+           				"jenis_klaim": jenis_klaim
+           			}, // change this to send js object
+           			type: "post",
+           			dataType: "JSON",
+           			success: function(res) {
+           				let urut = 1;
+
+           				if (res != null) {
+           					urut += parseInt(res.no_urut);
+           				}
+           				console.log(urut);
+           				document.getElementById("norut").value = urut;
+           			},
+           			error: function(res) {
+           				console.error(res);
+           				// alert("You Must Be Logged In to Do That")
+           			}
+           		});
+           	});
+
+           	$('#jnsM').change(function() {
+           		var jenis_klaim = $(this).val();
+           		console.log(jenis_klaim);
+           		$.ajax({
+           			url: "<?= base_url('Dashboard/get_norutM') ?>",
+           			data: {
+           				"jenis_klaim": jenis_klaim
+           			}, // change this to send js object
+           			type: "post",
+           			dataType: "JSON",
+           			success: function(res) {
+           				let urut = 1;
+
+           				if (res != null) {
+           					urut += parseInt(res.no_urut);
+           				}
+           				console.log(urut);
+           				document.getElementById("norut").value = urut;
+           			},
+           			error: function(res) {
+           				console.error(res);
+           				// alert("You Must Be Logged In to Do That")
+           			}
+           		});
            	});
            </script>
 

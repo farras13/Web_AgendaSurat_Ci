@@ -22,6 +22,7 @@ class M_basic extends CI_Model {
 	{
 		if ($w != null) {
 			$this->db->where($w);	
+			$this->db->order_by('id', 'desc');
 		}else{
 			if ($t == "claim") {
 				$this->db->order_by('id_claim', 'desc');	
@@ -60,6 +61,11 @@ class M_basic extends CI_Model {
 		$this->db->group_by('claim');		
 	}
 
+
+	public function norut()
+	{
+
+	}
 }
 
 /* End of file M_basic.php */
